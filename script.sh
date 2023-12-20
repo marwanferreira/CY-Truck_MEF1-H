@@ -31,14 +31,21 @@ shift # Skip the first argument (CSV file)
 while (( "$#" )); do
     case "$1" in
         -d1)
-            gnuplot -e "plot 'temp/d1_output.txt' using 1:2 with lines" > output/d1_graph.png
+            SECONDS=0  # Reset timer
             awk -F, '{print $6}' "$csv_file" | sort | uniq -c | sort -nr | head -10 > temp/d1_output.txt
+            duration=$SECONDS
+            echo "Processing for -d1 took $duration seconds."
+            gnuplot -e "plot 'temp/d1_output.txt' using 1:2 with lines" > output/d1_graph.png
             # Use GnuPlot to create a horizontal histogram from temp/d1_output.txt
             ;;
         -d2)
+            SECONDS=0  # Reset timer
+            # Your data processing commands
+            awk -F, '{distance[$6]+=$5} END {...}' "$csv_file" | sort -k2 -nr | head -10 > temp/d2_output.txt
+            duration=$SECONDS
+            echo "Processing for -d2 took $duration seconds."
             gnuplot -e "plot 'temp/d2_output.txt' using 1:2 with lines" > output/d2_graph.png
-            awk -F, '{distance[$6]+=$5} END {for (driver in distance) print driver, distance[driver]}' "$csv_file" | sort -k2 -nr | head -10 > temp/d2_output.txt
-            # Use GnuPlot to create a horizontal histogram from temp/d2_output.txt
+             # Use GnuPlot to create a horizontal histogram from temp/d2_output.txt
             ;;
         # Add more cases as needed
         *)
