@@ -19,8 +19,11 @@ if [ ! -f "$1" ]; then
 fi
 
 csv_file="$1"  # Initialize csv_file variable
-mkdir -p temp  # Create temp directory
-gnuplot -e "plot 'temp/d1_output.txt' using 1:2 with lines" > output/d1_graph.png
+if [ ! -d "temp" ]; then
+    mkdir "temp"
+fi
+rm -rf temp/*  # Clear the temp directory
+
 
 
 # Process additional options (like -d1, -d2, etc.)
@@ -28,10 +31,12 @@ shift # Skip the first argument (CSV file)
 while (( "$#" )); do
     case "$1" in
         -d1)
+            gnuplot -e "plot 'temp/d1_output.txt' using 1:2 with lines" > output/d1_graph.png
             awk -F, '{print $6}' "$csv_file" | sort | uniq -c | sort -nr | head -10 > temp/d1_output.txt
             # Use GnuPlot to create a horizontal histogram from temp/d1_output.txt
             ;;
         -d2)
+            gnuplot -e "plot 'temp/d2_output.txt' using 1:2 with lines" > output/d2_graph.png
             awk -F, '{distance[$6]+=$5} END {for (driver in distance) print driver, distance[driver]}' "$csv_file" | sort -k2 -nr | head -10 > temp/d2_output.txt
             # Use GnuPlot to create a horizontal histogram from temp/d2_output.txt
             ;;
