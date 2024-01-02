@@ -19,12 +19,11 @@ if [ ! -f "$1" ]; then
 fi
 
 csv_file="$1"  # Initialize csv_file variable
-if [ ! -d "temp" ]; then
-    mkdir "temp"
-fi
+
+# Ensure temp and output directories exist
+mkdir -p temp
+mkdir -p output  # Create output directory
 rm -rf temp/*  # Clear the temp directory
-
-
 
 # Process additional options (like -d1, -d2, etc.)
 shift # Skip the first argument (CSV file)
