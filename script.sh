@@ -2,7 +2,7 @@
 
 # Check if at least one argument is provided
 if [ $# -lt 1 ]; then
-    echo "Usage: $0 data_file.csv [options]"
+    echo "Usage: $0 data.csv [options]"
     exit 1
 fi
 
