@@ -25,9 +25,9 @@ BEGIN {
 }
 END {
     for (t in trajet) {
-        print t, trajet[t];  # Affiche l'ID du trajet et la distance totale
+        print t, trajet[t];
     }
-}' "$CSV_FILE" | sort -k2,2nr | head -10 | sort -k1,1n
+}' "$CSV_FILE" | sort -k2,2nr | head -10 | sort -k1,1nr
 
 # Fin du chronomètre
 end_time=$(date +%s)
