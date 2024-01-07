@@ -180,7 +180,7 @@ void freeSortedTree(SortedNode *root) {
 }
 
 
-// ... le reste de votre code ...
+
 
 int main() {
     clock_t start, end;
