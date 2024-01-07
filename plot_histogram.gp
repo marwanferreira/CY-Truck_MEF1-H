@@ -1,5 +1,5 @@
 set terminal png size 800,600
-set output 'drivers_histogram.png'
+set output 'Option-d1.png'
 
 set title "Nombre de trajets par Conducteur"
 set ylabel "Conducteurs"
