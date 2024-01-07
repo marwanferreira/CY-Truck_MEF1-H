@@ -124,17 +124,31 @@ void buildSortedTree(DriverNode *root, SortedNode **sortedRoot) {
     }
 }
 
-// Afficher les 10 premiers conducteurs de l'ABR trié
-void printTop10(SortedNode *root, int *count) {
-    if (root != NULL && *count < 10) {
-        printTop10(root->left, count);
-        if (*count < 10) {
-            printf("%s: %d trajets uniques\n", root->name, root->uniqueTrips);
-            (*count)++;
+void cleanString(char *str) {
+    char *p = str;
+    while (*p) {
+        if (*p == '\n' || *p == '\r') {
+            *p = '\0';
+            break;
         }
-        printTop10(root->right, count);
+        p++;
     }
 }
+
+void printTop10(SortedNode *root, int *count, FILE *fp) {
+    if (root != NULL && *count < 10) {
+        printTop10(root->left, count, fp);
+        if (*count < 10) {
+            // S'assurer que les guillemets entourent le nom complet du conducteur
+            cleanString(root->name);
+            fprintf(fp, "\"%s\" %d\n", root->name, root->uniqueTrips);
+            (*count)++;
+        }
+        printTop10(root->right, count, fp);
+    }
+}
+
+
 
 // Libérer la mémoire allouée pour le second ABR
 // Libérer la mémoire allouée pour les RouteNode
@@ -166,6 +180,8 @@ void freeSortedTree(SortedNode *root) {
 }
 
 
+// ... le reste de votre code ...
+
 int main() {
     clock_t start, end;
     double cpu_time_used;
@@ -177,10 +193,17 @@ int main() {
     // Construire l'ABR trié
     SortedNode *sortedRoot = NULL;
     buildSortedTree(root, &sortedRoot);
+    
+    FILE *fp = fopen("output.txt", "w"); // Ouvrir le fichier en mode écriture
+    if (fp == NULL) {
+        perror("Erreur lors de l'ouverture du fichier de sortie");
+        return 1;
+    }
 
-    // Afficher les 10 premiers conducteurs
-    int count = 0;
-    printTop10(sortedRoot, &count);
+    int count = 0; // Déclarer count ici
+    printTop10(sortedRoot, &count, fp); // Passer le fichier à la fonction
+
+    fclose(fp); // Fermer le fichier
 
     // Libérer toute la mémoire allouée
     freeDriverTree(root);
@@ -189,7 +212,6 @@ int main() {
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Temps d'exécution: %f secondes\n", cpu_time_used);
 
-
-
     return 0;
 }
+
