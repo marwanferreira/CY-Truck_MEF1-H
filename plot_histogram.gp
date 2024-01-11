@@ -1,15 +1,16 @@
-set terminal png size 800,600
-set output 'Option-d1.png'
-
-set title "Nombre de trajets par Conducteur"
-set ylabel "Conducteurs"
-set xlabel "Nombre de trajets"
+set terminal png size 600,800
+set output 'option_d1.png'
 set style data histograms
-set style fill solid 1.0 border -1
-set boxwidth 0.5
+set style fill solid border -1
+unset key; unset xlab
+set ytics nomirror
+set xtics rotate by 90 offset 1,.2 right
+set yrange [0:]
+set y2tics -100, 20
+set ytics nomirror
 set grid y
-set yrange [0:*]     # Assurez-vous que la plage est valide et suffisamment grande pour inclure toutes vos données
-set auto x           # Auto-ajuste la plage de l'axe des x en fonction des données
-
-plot 'output.txt' using 2:xticlabels(1) with boxes lc rgb"blue" notitle
+set ylabel "Nombre de trajets par Conducteur"
+set y2label "Option -d1 : Nb routes" rotate by 90 offset 0,2 tc "steelblue"
+set xlabel "Conducteurs" rotate by 180
+plot 'output.txt' using 2:xticlabels(1) notitle
 
