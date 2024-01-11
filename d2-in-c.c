@@ -90,6 +90,13 @@ void freeTree(DriverNode *root) {
     }
 }
 
+// Définir la fonction printTop10 ici, en dehors de la fonction main
+void printTop10(DriverNode **drivers, int size, FILE *file) {
+    for (int i = 0; i < 10 && i < size; i++) {
+        fprintf(file, "\"%s\" %.2f\n", drivers[i]->name, drivers[i]->totalDistance);
+    }
+}
+
 int main() {
     clock_t start, end;
     start = clock();
@@ -108,10 +115,20 @@ int main() {
     collectData(root, &drivers, &size, &capacity);
     qsort(drivers, size, sizeof(DriverNode*), compareDrivers);
 
-    printf("Top 10 Conducteurs:\n");
-    for (int i = 0; i < 10 && i < size; i++) {
-        printf("%s: %.2f km\n", drivers[i]->name, drivers[i]->totalDistance);
+    // Ouvrir un fichier pour écrire les résultats
+    FILE *file = fopen("output_d2.txt", "w");
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier de sortie");
+        freeTree(root);
+        free(drivers);
+        return EXIT_FAILURE;
     }
+
+    // Utiliser la fonction printTop10 pour écrire les résultats dans le fichier
+    printTop10(drivers, size, file);
+
+    // Fermer le fichier
+    fclose(file);
 
     end = clock();
     double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -122,3 +139,4 @@ int main() {
 
     return EXIT_SUCCESS;
 }
+
