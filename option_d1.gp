@@ -1,16 +1,18 @@
-set terminal png size 600,800
+set terminal png size 800,800
 set output 'option_d1.png'
 set style data histograms
 set style fill solid border -1
-unset key; unset xlab
+set boxwidth 2 relative
+unset key
 set ytics nomirror
 set xtics rotate by 90 offset 1,.2 right
-set yrange [0:]
-set y2tics -100, 20
-set ytics nomirror
+set y2tics rotate by 90 offset 0,-1.5
+set y2range [0:]
+set grid ytics lt 0 lw 1 lc rgb "gray"  # Pour les lignes horizontales
+set grid xtics lt 0 lw 1 lc rgb "gray"  # Pour les lignes verticales
 set grid y
-set ylabel "Nombre de trajets par Conducteur"
-set y2label "Option -d1 : Nb routes" rotate by 90 offset 0,2 tc "steelblue"
-set xlabel "Conducteurs" rotate by 180
-plot 'output.txt' using 2:xticlabels(1) notitle
+set xlabel "DRIVERS NAMES" rotate by 180
+set y2label "NB ROUTES"
+set ylabel "Option -d1 : Nb routes" rotate by 90 offset 3,0 tc "steelblue" font ",20"
+plot 'output.txt' using 2:xticlabels(1) notitle axes x1y2 lc rgb "dark-blue"
 
