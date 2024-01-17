@@ -7,7 +7,9 @@ unset key
 set ytics nomirror
 set xtics rotate by 90 offset 1,.2 right
 set y2tics rotate by 90 offset 0,-1.5
-set y2range [0:]
+set ytics rotate by 90 offset 0,-1.5 tc rgb "white"
+set y2range [0:250]
+set yrange [0:250]
 set grid ytics lt 0 lw 1 lc rgb "gray"  # Pour les lignes horizontales
 set grid xtics lt 0 lw 1 lc rgb "gray"  # Pour les lignes verticales
 set grid y
