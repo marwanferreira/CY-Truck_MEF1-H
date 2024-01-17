@@ -13,6 +13,6 @@ set grid xtics lt 0 lw 1 lc rgb "gray"  # Pour les lignes verticales
 set grid y
 set xlabel "DRIVERS NAMES" rotate by 180
 set y2label "NB ROUTES"
-set ylabel "Option -d1 : Nb routes" rotate by 90 offset 3,0 tc "steelblue" font ",20"
+set ylabel "Option -d1 : Nb routes" rotate by 90 offset 1,0 tc "steelblue" font ",20"
 plot 'output.txt' using 2:xticlabels(1) notitle axes x1y2 lc rgb "dark-blue"
 
