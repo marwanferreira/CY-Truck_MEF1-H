@@ -38,7 +38,4 @@ Le script shell prend en paramètres le chemin du fichier CSV d'entrée et les c
 - **-t** : Traite les 10 villes les plus traversées.
 - **-s** : Traite les statistiques sur les étapes.
 
-Exemple d'utilisation :
 
-```bash
-./cytruck.sh chemin/vers/data.csv -l
