@@ -25,4 +25,5 @@ Cette structure facilite la gestion et l'organisation des fichiers du projet CYT
 Avant l'utilisation de notre application, veuillez vous accorder les droits d'exécution de l'application dans votre terminal via la commande suivante :
 
 ```bash
-chmod +x cytruck.sh
+chmod +x scriptfinal.sh
+
