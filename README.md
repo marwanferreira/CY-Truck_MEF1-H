@@ -26,7 +26,7 @@ Avant l'utilisation de notre application, veuillez vous accorder les droits d'ex
 
 ```bash
 chmod +x scriptfinal.sh
-
+```
 ## Utilisation du Script Shell
 
 Le script shell prend en paramètres le chemin du fichier CSV d'entrée et les choix de traitements à effectuer. Voici les options disponibles :
