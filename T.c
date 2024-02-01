@@ -160,6 +160,7 @@ node *insert(node *avl, inf2 *city, int TID) {
         newNode->maxTIDSize = 1000;
         newNode->idxTID = 0;
         newNode->TID[newNode->idxTID++] = TID;
+        newNode->city.occ = 1;
         return newNode;
     }
 
@@ -170,12 +171,8 @@ node *insert(node *avl, inf2 *city, int TID) {
     } else if (key < 0) {
         avl->fg = insert(avl->fg, city, TID);
     } else if (key == 0) {
-        // Incrémenter 'occ' chaque fois que la ville est rencontrée
-        
-
-        // Gestion des TID pour éviter de compter plusieurs fois la même ville pour un même trajet
         if (compID(avl->TID, TID, avl->idxTID) == 0) {
-            // Doublon trouvé, ne pas insérer le TID, mais 'occ' a déjà été incrémenté
+            // Doublon trouvé, ne pas insérer
             free(city->ville);
             free(city);
         } else {
@@ -184,7 +181,7 @@ node *insert(node *avl, inf2 *city, int TID) {
                 avl->TID = resizeTIDArray(avl->TID, &avl->maxTIDSize);
             }
             avl->TID[avl->idxTID++] = TID;
-            // Incrémenter 'occd' uniquement si c'est une ville de départ
+            avl->city.occ++;
             avl->city.occd += city->occd;
             free(city->ville);
             free(city);
@@ -195,6 +192,7 @@ node *insert(node *avl, inf2 *city, int TID) {
     avl->height = 1 + max(getH(avl->fg), getH(avl->fd));
     int balance = getB(avl);
     // Appliquer des rotations si nécessaire
+    // ...
 
     return avl;
 }
