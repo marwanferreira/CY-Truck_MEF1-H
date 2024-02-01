@@ -27,3 +27,18 @@ Avant l'utilisation de notre application, veuillez vous accorder les droits d'ex
 ```bash
 chmod +x scriptfinal.sh
 
+## Utilisation du Script Shell
+
+Le script shell prend en paramètres le chemin du fichier CSV d'entrée et les choix de traitements à effectuer. Voici les options disponibles :
+
+- **-h** : Affiche l'aide expliquant les options disponibles.
+- **-d1** : Traite les conducteurs avec le plus de trajets.
+- **-d2** : Traite les conducteurs avec la plus grande distance parcourue.
+- **-l** : Traite les 10 trajets les plus longs.
+- **-t** : Traite les 10 villes les plus traversées.
+- **-s** : Traite les statistiques sur les étapes.
+
+Exemple d'utilisation :
+
+```bash
+./cytruck.sh chemin/vers/data.csv -l
