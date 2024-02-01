@@ -7,7 +7,7 @@ typedef struct info {
     char *ville;
     int occ;
     int occd;
-}inf2;
+} inf2;
 
 typedef struct node {
     struct info city;
@@ -25,7 +25,6 @@ typedef struct node {
 #define IGN1 1
 
 int counter;
-
 
 //création d'une structure pour chaque ville, occ : occurence de chaque ville, occd : occurence où la ville est une ville de départ.
 inf2 *newinf2o(char *ville, int occd) { 
@@ -350,12 +349,6 @@ void sort(int n, int a1[], int a2[], char a3[][60]) {
 
 }
 
-//print les résultats au format adapté a GNUPLOT
-void print(int n, int *a1, int *a2, char a3[][60]) {
-    for (int i = 0; i < n; i++) {
-        printf("%d | %s | OCC: %d | OCCD: %d\n", i, a3[i], a1[i], a2[i]);
-    }
-}
 
 
 void freeAVL(node *avl) {
@@ -369,39 +362,53 @@ void freeAVL(node *avl) {
     free(avl);
 }
 
+void printToFile(const char* filename, int n, int *occ, int *occd, char cities[][60]);
 
 int main() {   
     char csvFilePath[] = "data.csv";  // Chemin vers le fichier CSV
     node *avl1 = NULL;  // Premier arbre AVL
     node *avl2 = NULL;  // Deuxième arbre AVL pour le tri
 
-    // Étape 1 : Traitement du fichier CSV et construction du premier AVL
+    // Traitement du fichier CSV et construction du premier AVL
     avl1 = proCsv(csvFilePath, avl1);
     if (avl1 == NULL) {
         fprintf(stderr, "Erreur lors de la construction de l'AVL à partir du CSV.\n");
         return 1;
     }
 
-    // Étape 2 : Parcours du premier AVL et construction du deuxième AVL
+    // Parcours du premier AVL et construction du deuxième AVL
     parseAvl(avl1, &avl2);
 
-    // Étape 3 : Parcours du deuxième AVL et collecte des données
-    int occdTAB[10];
-    int occTAB[10];
+    // Parcours du deuxième AVL et collecte des données
+    int occdTAB[10], occTAB[10];
     char villeTAB[10][60];
     counter = 0;
     parcours(avl2, occTAB, occdTAB, villeTAB, &counter);
 
-    // Étape 4 : Tri des villes par ordre alphabétique
+    // Tri des villes par ordre alphabétique
     sort(10, occTAB, occdTAB, villeTAB);
 
-    // Étape 5 : Affichage des résultats
-    printf("Les 10 villes les plus fréquentées :\n");
-    print(10, occTAB, occdTAB, villeTAB);
+    // Écriture des résultats dans un fichier pour Gnuplot
+    printToFile("output_t.txt", counter, occTAB, occdTAB, villeTAB);
 
-    // Étape 6 : Libération de la mémoire
+    // Libération de la mémoire
     freeAVL(avl1);
     freeAVL(avl2);
 
+    // Pas besoin de fermer stdout ici
     return 0;
+}
+
+void printToFile(const char* filename, int n, int *occ, int *occd, char cities[][60]) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Unable to open file for writing");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        fprintf(file, "%s;%d;%d\n", cities[i], occ[i], occd[i]);
+    }
+
+    fclose(file);
 }
