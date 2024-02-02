@@ -14,6 +14,21 @@ Pour installer GNUplot et ImageMagick sur macOS, vous pouvez utiliser Homebrew a
  brew install imagemagick
 ```
 
+### Installation sur Ubuntu
+
+Ouvrez le terminal et exécutez les commandes suivantes:
+
+```bash
+# Mise à jour de la liste des paquets
+sudo apt-get update
+
+# Installation de Gnuplot
+sudo apt-get install gnuplot
+
+# Installation de ImageMagick
+sudo apt-get install imagemagick
+```
+
 ## Description Générale
 
 Vous êtes le gérant d'une société nationale de transport routier, et vous cherchez à optimiser l'analyse des données de trajets routiers? Ce projet consiste à développer un programme en shell qui analyse un fichier de données volumineux, utilise un programme C pour des traitements spécifiques si nécessaire, puis génère des graphiques résumant les résultats.
