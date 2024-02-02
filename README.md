@@ -25,7 +25,8 @@ Cette structure facilite la gestion et l'organisation des fichiers du projet CYT
 Avant l'utilisation de notre application, veuillez vous accorder les droits d'exécution de l'application dans votre terminal via la commande suivante :
 
 ```bash
-chmod +x scriptfinal.sh
+chmod +x script-final.sh
+./script-final.sh <chemin de votre fichier de donnée> <option voulu>
 ```
 ## Utilisation du Script Shell
 
