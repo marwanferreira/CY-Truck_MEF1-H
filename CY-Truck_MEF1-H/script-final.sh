@@ -66,7 +66,7 @@ elif [ "$option" == "-s" ]; then
     tail -n +2 temp/s1.csv > temp/s2.csv
     gcc -o temp/exect progc/S.c 
     ./temp/exect temp/s2.csv
-    head -n 50 temp/sortie.csv > temp/s.txt
+    head -n 50 temp/sortie.csv > temp/output-s.txt
     gnuplot gp/s.gp
     open images/option_s.png
 
