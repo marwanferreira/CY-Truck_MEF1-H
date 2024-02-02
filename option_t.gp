@@ -15,4 +15,4 @@ set tmargin 5
 set bmargin 9
 set grid y
 set yrange [0:3500]
-plot 'output_t.txt' using 2:xticlabels(1) title 'Total Routes' lc rgb "blue", '' using 3 title 'First Departure' lc rgb "skyblue"
+plot 'output_t.txt' using 2:xticlabels(1) title 'Total Routes' lc rgb "dark-blue", '' using 3 title 'First Departure' lc rgb "dark-orange"
