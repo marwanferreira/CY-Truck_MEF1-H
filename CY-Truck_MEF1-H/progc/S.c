@@ -1,30 +1,4 @@
-#include<stdio.h>
-#include <stdlib.h>
-
-//Structure de l'Arbre 
-typedef struct ABR{
-  int route_ID;
-  int etape_ID;
-  float distance;
-  float min;
-  float max;
-  int n;
-  struct ABR* fG;
-  struct ABR* fD;
-}ABR;
-
-
-//Structure AVL
-typedef struct AVL{
-    int route_ID;
-    float min;
-    float max;
-    float moy;
-    float diff;
-    int eq;
-    struct AVL* fG;
-    struct AVL* fD;
-}AVL;
+#include "S.h"
 
 
 //Fonction qui créer les noeuds de l'arbre
