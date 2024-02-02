@@ -1,5 +1,19 @@
 # CYTRUCK_MEF1-H
 
+
+## Prérequis
+
+Avant de commencer à utiliser ou à compiler ce projet, vous devez installer GNUplot et ImageMagick. Ces outils sont nécessaires pour la génération de graphiques et la manipulation d'images.
+
+### Installation sur macOS
+
+Pour installer GNUplot et ImageMagick sur macOS, vous pouvez utiliser Homebrew avec les commandes suivantes :
+
+```bash
+ brew install gnuplot
+ brew install imagemagick
+```
+
 ## Description Générale
 
 Vous êtes le gérant d'une société nationale de transport routier, et vous cherchez à optimiser l'analyse des données de trajets routiers? Ce projet consiste à développer un programme en shell qui analyse un fichier de données volumineux, utilise un programme C pour des traitements spécifiques si nécessaire, puis génère des graphiques résumant les résultats.
