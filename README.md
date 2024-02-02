@@ -70,4 +70,31 @@ Le script shell prend en paramètres le chemin du fichier CSV d'entrée et les c
 - **-t** : Traite les 10 villes les plus traversées.
 - **-s** : Traite les statistiques sur les étapes.
 
+## Utilisation du Makefile
 
+Le Makefile inclus dans ce projet facilite la compilation et l'exécution des scripts et des programmes C. Voici comment vous pouvez l'utiliser pour exécuter différentes commandes.
+
+### Définition des Commandes
+
+- `make droit` : Attribue les droits d'exécution au script shell principal.
+- `make d1` : Exécute le script shell avec l'option `-d1` pour traiter les conducteurs avec le plus de trajets.
+- `make d2` : Exécute le script shell avec l'option `-d2` pour traiter les conducteurs avec la plus grande distance parcourue.
+- `make l` : Exécute le script shell avec l'option `-l` pour traiter les 10 trajets les plus longs.
+- `make s` : Exécute le script shell avec l'option `-s` pour traiter les statistiques sur les étapes.
+- `make t` : Exécute le script shell avec l'option `-t` pour traiter les 10 villes les plus traversées.
+- `make h` : Affiche l'aide expliquant les options disponibles du script shell.
+- `make clean` : Nettoie le répertoire du projet en supprimant les fichiers temporaires et les images générées.
+
+### Comment Exécuter
+
+Pour utiliser le Makefile, ouvrez un terminal dans le répertoire racine du projet et utilisez la commande `make` suivie du nom de la règle que vous souhaitez exécuter. Par exemple, pour attribuer les droits d'exécution au script shell, tapez :
+
+```bash
+make droit
+```
+
+Pour nettoyer le répertoire du projet, tapez :
+
+```bash
+make clean
+```
