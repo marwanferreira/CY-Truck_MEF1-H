@@ -10,6 +10,8 @@ L'organisation du projet suit les directives spécifiées dans les consignes :
 
 - **data/** : Ce répertoire contient le fichier CSV d'entrée contenant les données des trajets routiers.
 
+- **gp/** : Ce repertoire continient tous les codes necessaire a la gestion des images/graphique.
+  
 - **progc/** : Ici, vous trouverez les programmes C nécessaires pour le traitement des données, ainsi que leurs fichiers Makefile et l'exécutable généré.
 
 - **images/** : Ce répertoire contiendra les graphiques générés à partir des résultats des traitements.
