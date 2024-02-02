@@ -9,6 +9,6 @@ set terminal png size 1400, 600
     set yrange [0:*]
     unset xrange
     set datafile separator ";"
-    plot 'temp/s.txt' using 3:xtic(1) title 'Distance average (Km)' with lines lc rgb 'blue', \
-         'temp/s.txt' using 4:xtic(1) title 'Distances Max (Km)' with lines lc rgb 'red', \
-         'temp/s.txt' using 2:xtic(1) title 'Distances Min (Km)' with lines lc rgb 'green'
+    plot 'temp/output-s.txt' using 3:xtic(1) title 'Distance average (Km)' with lines lc rgb 'blue', \
+         'temp/output-s.txt' using 4:xtic(1) title 'Distances Max (Km)' with lines lc rgb 'red', \
+         'temp/output-s.txt' using 2:xtic(1) title 'Distances Min (Km)' with lines lc rgb 'green'
